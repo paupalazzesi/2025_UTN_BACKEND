@@ -9,12 +9,15 @@ la conection string por seguridad */
 async function connectMongoDB () {
     try {
         await mongoose.connect(ENVIRONMENT.MONGO_DB_CONNECTION_STRING, {
-            timeourMS: 10000 // 10s
+            timeoutMS: 10000, // 10s
+            useNewUrlParser: true,
+            useUnifiedTopology: true
         })
         console.log('connection succeded')
     } 
     catch(error) {
-        console.log('connection failed')
+        console.log('connection failed');
+        console.error(error);
     }  
 }
 
