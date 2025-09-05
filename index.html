@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+        const productos = [
+    {
+        id: 1,
+        title: "Tv samsung 32\"",
+        price: 300000,
+    },
+    {
+        id: 2,
+        title: "Tv samsung 42\"",
+        price: 400000,
+    },
+    {
+        id: 3,
+        title: "Tv samsung 52\"",
+        price: 500000,
+    },
+    {
+        id: 4,
+        title: "Tv samsung 65\"",
+        price: 1000000,
+    },
+    {
+        id: 4,
+        title: "Tv samsung 65\"",
+        price: 550000,
+    }
+]
+/* 
+Crear un programa que muestre por consola a la productos entre 400000 y 950000 
+*/
+
+const filtrados = productos.forEach(producto => {
+    if (producto.price >= 400000 && producto.price < 950000) {
+        console.log(producto.title)
+    }
+});
+
+
+
+
+
+</script>    
+</body>
+
+</html>
