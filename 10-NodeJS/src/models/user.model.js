@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 // aca declaras la tabla como era en phpMyAdmin, 
 // todo lo que le configurabamos a las columnas que queriamos que tenga 
 // podes pasarle objetos a las propiedades con todas las config de la tabla.
+
 const userSchema = new mongoose.Schema(
     {
         name: String,
@@ -28,8 +29,6 @@ const userSchema = new mongoose.Schema(
             type: Boolean,
             default: true
         }
-        
-
     }
 )
 

@@ -5,13 +5,18 @@ import Workspace from "./models/workspace.model.js";
 
 connectMongoDB()
 
-// Users.insertOne({
-//     name: 'pepe',
-//     email: 'pepe@gmail.com',
-//     password: 'pepe123',
-// })
 
-Workspace.insertOne({
-    name: 'Test',
-    url_image: 'test-value'
-})
+// you can call functions to insertOne object only when calls function. 
+function createUser(name, email, password) {
+    Users.insertOne({
+        name: name,
+        email: email,
+        password: password,
+    })
+}
+function createWorkspace(name, url_image) {
+    Workspace.insertOne({
+        name: name,
+        url_image: url_image
+    })
+}
