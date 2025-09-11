@@ -1,4 +1,4 @@
-import Users from "../models/user.model"
+import Users from "../models/user.model.js"
 class UserRepository {
 
     static async createUser(name, email, password) {
@@ -18,8 +18,8 @@ class UserRepository {
     }
 
     static async getByID(user_id) {
-        await Users.findById(user_id)
-        return true
+       const user_found = await Users.findById(user_id)
+       return user_found;
     }
 
     static async deleteByID(user_id) {
