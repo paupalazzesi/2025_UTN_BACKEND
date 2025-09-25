@@ -4,9 +4,9 @@ import ENVIRONMENT from './environment.config.js'
 // es como el obejto de conection, 
 // pero transporta la configuracion de nuestro mail
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: "gmail",
     auth: {
-        user: 'mariapaula.p02@gmail.com',
+        user: "mariapaula.p02@gmail.com",
         pass: ENVIRONMENT.GMAIL_PASSWORD
     }
 })

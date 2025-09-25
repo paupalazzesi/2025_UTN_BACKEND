@@ -3,7 +3,7 @@ import { ServerError } from "../utils/customError.utils.js"
 
 class AuthController {
 
-    static async register() {
+    static async register(request, response) {
            try {
             /* 
             Recibiremos un username, email, password
