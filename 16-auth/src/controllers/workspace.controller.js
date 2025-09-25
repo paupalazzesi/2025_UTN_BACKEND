@@ -77,7 +77,7 @@ class WorkspaceController {
     static async post(request, response) {
          try{
             const name = request.body.name
-            const url_img = request.url_img
+            const url_img = request.body.url_img
 
             if(!name || typeof(name) !== 'string' || name.length > 30){            
                 throw ServerError(
