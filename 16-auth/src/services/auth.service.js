@@ -69,6 +69,50 @@ class AuthService {
       throw error;
     }
   }
+  
+  static async login(email, password) {
+    /*
+    - se busca por email y guardar en una variable
+        - si no se encuentra: es un 404 'Email no resgistrado' o 'email o contraseña invalida' tmb para no blanquear que el otro email esta registrado
+        - se encontro y:
+            - comparamos con bcryp.compare para chequear que la pass recibida sea igual a la hash en db
+                - puede ser verdadera
+                - o falso: 401 unauthorized 'email o contraseña invalida'
+        - generar el authorization token con los datos q consideermos importantes para una sesion: ej: name, email, rol, created_at, themes, preferencias, idioma 
+        - retornar el token       
+    */
+    try {
+        const user = await UserRepository.getByEmail(email) 
+        if(!user) {
+            throw new ServerError(404, 'Email no registrado')
+        }  
+        const isValidPass = await bcrypt.compare(password, user.password)
+        if(!isValidPass) {
+            throw new ServerError(401, 'contraseña invalida')
+        }     
+        const authorization_token = jwt.sign(
+            {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                created_at: user.created_at                
+            },
+            ENVIRONMENT.JWT_KEY,
+            {
+                expiresIn: '7d'
+            }
+        )
+        return {
+            authorization_token
+        }
+    } catch (error) {
+        
+    }
+
+
+
+  }
+
 }
 
 export default AuthService;
