@@ -3,12 +3,11 @@ class UserRepository {
 
     static async createUser(name, email, password) {
         // logica de interaccion para crear usuario
-        await Users.insertOne({
+        return await Users.insertOne({
             name: name,
             email: email,
             password: password,
         })
-        return true
     }
 
     static async getAll() {

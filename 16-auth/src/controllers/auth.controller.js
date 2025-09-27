@@ -67,8 +67,36 @@ class AuthController {
         
     }
 
-    static async verifyEmail() {
-        
+    static async verifyEmail(request, response) {
+        try {
+            const {verification_token} = request.params
+            await AuthService.verifyEmail(verification_token)
+            response.json({
+                ok: true,
+                status: 200,
+                message: 'usuario validado'
+            })
+        } catch (error) {            
+            console.log(error)
+            if (error.status) {
+                return response.status(error.status).json(
+                    {
+                        ok: false,
+                        status: error.status,
+                        message: error.message
+                    }
+                )
+            }
+            else {
+                return response.status(500).json(
+                    {
+                        ok: false,
+                        status: 500,
+                        message: 'Error interno del servidor'
+                    }
+                )
+            }        
+        }
     }
 
 }

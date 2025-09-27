@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        verifies_email: {
+        verified_email: {
             type: Boolean,
             required: true,
             default: false
